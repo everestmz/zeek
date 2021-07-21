@@ -2,6 +2,7 @@ zeek:
   language: c
   engine: libFuzzer 
   steps:
+    - run: git submodule update --recursive --init
     - run: ./configure --build-type=debug --build-dir=./build-fuzz-cov --sanitizers=fuzzer-no-link --enable-fuzzers --enable-coverage
     - run: cd build-fuzz-cov && make -j 2
   sanitizers:
