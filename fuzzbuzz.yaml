@@ -2,6 +2,7 @@ zeek:
   language: c
   engine: libFuzzer 
   steps:
+    - run: sudo apt-get install cmake make gcc g++ flex bison libpcap-dev libssl-dev python3 python3-dev swig zlib1g-dev
     - run: git submodule update --recursive --init
     - run: ./configure --build-type=debug --build-dir=./build-fuzz-cov --sanitizers=fuzzer-no-link --enable-fuzzers --enable-coverage
     - run: cd build-fuzz-cov && make -j 2
